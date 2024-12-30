@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资产管理提效-图片批量压缩工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="container">
+        <h1>资产管理提效-图片批量压缩工具</h1>
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*" multiple>
+            <label for="imageInput" class="upload-button">选择图片</label>
+            <div class="upload-info">支持多选或拖拽多个图片</div>
+        </div>
+        
+        <div class="settings">
+            <div class="format-control">
+                <label>输出格式:</label>
+                <select id="outputFormat">
+                    <option value="image/jpeg">JPEG</option>
+                    <option value="image/png">PNG</option>
+                    <option value="image/webp">WebP</option>
+                    <option value="image/gif">GIF</option>
+                    <option value="image/bmp">BMP</option>
+                    <option value="image/tiff">TIFF</option>
+                </select>
+                <div class="format-info">
+                    <span>✓ JPEG: 适合照片，体积小</span>
+                    <span>✓ PNG: 支持透明背景，无损压缩</span>
+                    <span>✓ WebP: 更高压缩率，新一代格式</span>
+                    <span>✓ GIF: 支持动画，适合简单图像</span>
+                    <span>✓ BMP: 无压缩，完整保真</span>
+                    <span>✓ TIFF: 专业图像，支持多页面</span>
+                </div>
+            </div>
+            
+            <div class="quality-control">
+                <label for="quality">压缩质量 (1-100):</label>
+                <input type="range" id="quality" min="1" max="100" value="75">
+                <span id="qualityValue">75</span>
+            </div>
+            <div class="size-control">
+                <div class="dimension-control">
+                    <label for="width">宽度 (像素):</label>
+                    <input type="number" id="width" value="1920" min="1">
+                </div>
+                <div class="dimension-control">
+                    <label for="height">高度 (像素):</label>
+                    <input type="number" id="height" value="1080" min="1">
+                </div>
+                <label class="maintain-ratio">
+                    <input type="checkbox" id="maintainRatio" checked>
+                    保持宽高比
+                </label>
+            </div>
+        </div>
+
+        <div class="images-list">
+            <!-- 图片列表将在这里动态生成 -->
+        </div>
+
+        <div class="batch-actions">
+            <button id="compressAllBtn" class="action-button" disabled>压缩所有</button>
+            <button id="downloadAllBtn" class="action-button" disabled>打包下载</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+    <script src="background.js"></script>
+    <div class="download-notice">
+        ⚠️ 温馨提示：单张图片下载功能暂时异常，请使用打包下载功能
+    </div>
+</body>
+</html> 
